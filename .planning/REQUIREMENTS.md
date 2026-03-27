@@ -36,10 +36,10 @@ Requirements for the architecture design document deliverable.
 
 ### Alarm & Notifications
 
-- [ ] **ALRM-01**: Architecture documents alarm detection via IoT Rules Engine threshold evaluation
-- [ ] **ALRM-02**: Architecture documents SNS fan-out for email notifications
-- [ ] **ALRM-03**: Architecture documents EventBridge for extensible multi-channel notification routing (email, SMS, webhook, future channels)
-- [ ] **ALRM-04**: Architecture documents alarm deduplication strategy (prevent notification storms)
+- [x] **ALRM-01**: Architecture documents alarm detection via IoT Rules Engine threshold evaluation
+- [x] **ALRM-02**: Architecture documents SNS fan-out for email notifications
+- [x] **ALRM-03**: Architecture documents EventBridge for extensible multi-channel notification routing (email, SMS, webhook, future channels)
+- [x] **ALRM-04**: Architecture documents alarm deduplication strategy (prevent notification storms)
 
 ### API
 
@@ -125,10 +125,10 @@ Deferred — optional bonus items not in primary scope.
 | STOR-02 | Phase 2 | Pending |
 | STOR-03 | Phase 2 | Pending |
 | STOR-04 | Phase 2 | Pending |
-| ALRM-01 | Phase 2 | Pending |
-| ALRM-02 | Phase 2 | Pending |
-| ALRM-03 | Phase 2 | Pending |
-| ALRM-04 | Phase 2 | Pending |
+| ALRM-01 | Phase 2 | Complete |
+| ALRM-02 | Phase 2 | Complete |
+| ALRM-03 | Phase 2 | Complete |
+| ALRM-04 | Phase 2 | Complete |
 | API-01 | Phase 4 | Pending |
 | API-02 | Phase 4 | Pending |
 | API-03 | Phase 4 | Pending |

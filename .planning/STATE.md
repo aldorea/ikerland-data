@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-03-27T16:36:41.361Z"
+stopped_at: Completed 02-03-PLAN.md (alarm-notifications)
+last_updated: "2026-03-27T16:36:51.926Z"
 progress:
   total_phases: 4
   completed_phases: 1
@@ -50,6 +50,7 @@ Plan: 3 of 3
 | Phase 01-foundation-device-connectivity-security P02 | 1 | 2 tasks | 1 files |
 | Phase 01 P03 | 2m | 2 tasks | 1 files |
 | Phase 02-data-pipeline-storage-alarm-notifications P01 | 7 | 1 tasks | 1 files |
+| Phase 02-data-pipeline-storage-alarm-notifications P03 | 1m | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -72,6 +73,8 @@ Recent decisions affecting current work:
 - [Phase 01]: D-07 Certificate rotation marked as v2 consideration — not part of initial architecture
 - [Phase 02-data-pipeline-storage-alarm-notifications]: Kinesis batch processing selected over per-message Lambda (10-20x fewer invocations) and SQS (no replay) for telemetry hot path
 - [Phase 02-data-pipeline-storage-alarm-notifications]: DLQ placement rule: ESM consumers use DestinationConfig.OnFailure; async-invoked Lambdas use function-level DeadLetterConfig
+- [Phase 02-data-pipeline-storage-alarm-notifications]: D-08/D-09: IoT Rules Engine WHERE clause as coarse pre-filter + DynamoDB conditional write (attribute_not_exists) with 15-min TTL for alarm deduplication
+- [Phase 02-data-pipeline-storage-alarm-notifications]: D-10/D-11: SNS alarm-notifications fan-out hub + EventBridge iot-alarm-bus extensibility layer for future notification channels (zero code changes)
 
 ### Pending Todos
 
@@ -85,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T16:36:30.139Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-03-27T16:36:51.923Z
+Stopped at: Completed 02-03-PLAN.md (alarm-notifications)
 Resume file: None
