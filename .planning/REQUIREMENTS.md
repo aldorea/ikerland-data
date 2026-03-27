@@ -9,10 +9,10 @@ Requirements for the architecture design document deliverable.
 
 ### Ingestion
 
-- [ ] **INGT-01**: Architecture documents IoT Core as the MQTT/HTTPS entry point for device telemetry, config, and alarm events in JSON format
-- [ ] **INGT-02**: Architecture documents IoT Rules Engine for message routing and filtering by message type (telemetry, config, alarm)
-- [ ] **INGT-03**: Architecture documents Kinesis Data Firehose as ingestion buffer for cost-optimized telemetry processing at scale
-- [ ] **INGT-04**: Architecture includes topic namespace design (e.g., `devices/{thingName}/telemetry`, `/alarm`, `/config`)
+- [x] **INGT-01**: Architecture documents IoT Core as the MQTT/HTTPS entry point for device telemetry, config, and alarm events in JSON format
+- [x] **INGT-02**: Architecture documents IoT Rules Engine for message routing and filtering by message type (telemetry, config, alarm)
+- [x] **INGT-03**: Architecture documents Kinesis Data Firehose as ingestion buffer for cost-optimized telemetry processing at scale
+- [x] **INGT-04**: Architecture includes topic namespace design (e.g., `devices/{thingName}/telemetry`, `/alarm`, `/config`)
 
 ### Device Management
 
@@ -63,12 +63,12 @@ Requirements for the architecture design document deliverable.
 
 ### Security & Networking
 
-- [ ] **SEC-01**: Architecture documents VPC topology with private subnets for all databases (no public access)
-- [ ] **SEC-02**: Architecture documents VPC endpoints (Gateway + Interface) for DynamoDB, S3, Timestream, etc.
-- [ ] **SEC-03**: Architecture documents IAM least-privilege roles for all service-to-service communication
-- [ ] **SEC-04**: Architecture documents KMS encryption at rest for S3, DynamoDB, Timestream
-- [ ] **SEC-05**: Architecture documents TLS 1.2+ encryption in transit (enforced by IoT Core)
-- [ ] **SEC-06**: Architecture documents WAF on CloudFront and API Gateway
+- [x] **SEC-01**: Architecture documents VPC topology with private subnets for all databases (no public access)
+- [x] **SEC-02**: Architecture documents VPC endpoints (Gateway + Interface) for DynamoDB, S3, Timestream, etc.
+- [x] **SEC-03**: Architecture documents IAM least-privilege roles for all service-to-service communication
+- [x] **SEC-04**: Architecture documents KMS encryption at rest for S3, DynamoDB, Timestream
+- [x] **SEC-05**: Architecture documents TLS 1.2+ encryption in transit (enforced by IoT Core)
+- [x] **SEC-06**: Architecture documents WAF on CloudFront and API Gateway
 
 ### Documentation Quality
 
@@ -110,10 +110,10 @@ Deferred — optional bonus items not in primary scope.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INGT-01 | Phase 1 | Pending |
-| INGT-02 | Phase 1 | Pending |
-| INGT-03 | Phase 1 | Pending |
-| INGT-04 | Phase 1 | Pending |
+| INGT-01 | Phase 1 | Complete |
+| INGT-02 | Phase 1 | Complete |
+| INGT-03 | Phase 1 | Complete |
+| INGT-04 | Phase 1 | Complete |
 | DEVM-01 | Phase 1 | Pending |
 | DEVM-02 | Phase 1 | Pending |
 | DEVM-03 | Phase 1 | Pending |
@@ -140,12 +140,12 @@ Deferred — optional bonus items not in primary scope.
 | LAKE-03 | Phase 3 | Pending |
 | LAKE-04 | Phase 3 | Pending |
 | LAKE-05 | Phase 3 | Pending |
-| SEC-01 | Phase 1 | Pending |
-| SEC-02 | Phase 1 | Pending |
-| SEC-03 | Phase 1 | Pending |
-| SEC-04 | Phase 1 | Pending |
-| SEC-05 | Phase 1 | Pending |
-| SEC-06 | Phase 1 | Pending |
+| SEC-01 | Phase 1 | Complete |
+| SEC-02 | Phase 1 | Complete |
+| SEC-03 | Phase 1 | Complete |
+| SEC-04 | Phase 1 | Complete |
+| SEC-05 | Phase 1 | Complete |
+| SEC-06 | Phase 1 | Complete |
 | DOC-01 | Phase 4 | Pending |
 | DOC-02 | Phase 4 | Pending |
 | DOC-03 | Phase 4 | Pending |

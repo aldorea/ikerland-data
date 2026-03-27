@@ -31,8 +31,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. The security section explicitly covers encryption at rest (KMS), encryption in transit (TLS 1.2+), IAM least-privilege roles per service, and WAF placement — with no hand-waving
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
-- [ ] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
+- [x] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
+- [x] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
 - [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
 
 ### Phase 2: Data Pipeline, Storage & Alarm Notifications
@@ -47,8 +47,8 @@ Plans:
   5. SQS dead-letter queues are documented for all Lambda consumers — no silent data loss paths exist in the described architecture
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
-- [ ] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
+- [x] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
+- [x] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
 - [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
 
 ### Phase 3: Data Lake & ETL
@@ -90,7 +90,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation, Device Connectivity & Security | 0/3 | Planning complete | - |
+| 1. Foundation, Device Connectivity & Security | 2/3 | In Progress|  |
 | 2. Data Pipeline, Storage & Alarm Notifications | 0/TBD | Not started | - |
 | 3. Data Lake & ETL | 0/TBD | Not started | - |
 | 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |

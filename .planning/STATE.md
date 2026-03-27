@@ -2,16 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-03-27T15:37:39.360Z"
-last_activity: 2026-03-27 — Roadmap created, ready to begin Phase 1 planning
+status: Ready to execute
+stopped_at: Completed 01-02-PLAN.md — Device Connectivity and Ingestion Layer
+last_updated: "2026-03-27T16:06:25.650Z"
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 3
+  completed_plans: 2
 ---
 
 # Project State
@@ -21,16 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** A well-documented, decoupled, scalable, and cost-effective AWS architecture with justified design decisions — for evaluator assessment of cloud architecture competence
-**Current focus:** Phase 1 — Foundation, Device Connectivity & Security
+**Current focus:** Phase 01 — foundation-device-connectivity-security
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation, Device Connectivity & Security)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-27 — Roadmap created, ready to begin Phase 1 planning
-
-Progress: [░░░░░░░░░░] 0%
+Phase: 01 (foundation-device-connectivity-security) — EXECUTING
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -52,6 +46,8 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 01-foundation-device-connectivity-security P01 | 2 | 2 tasks | 1 files |
+| Phase 01-foundation-device-connectivity-security P02 | 1 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -63,6 +59,12 @@ Recent decisions affecting current work:
 - [Init]: Documentation-only deliverable — design competence assessment, not implementation
 - [Init]: AWS-first with optional multi-cloud notes — primary requirement is AWS
 - [Init]: Mermaid for diagrams — renders in Markdown, version-controllable
+- [Phase 01-foundation-device-connectivity-security]: Single NAT Gateway for cost optimization; production HA would use one per AZ (D-03)
+- [Phase 01-foundation-device-connectivity-security]: Gateway endpoints (S3, DynamoDB) free; Interface endpoints for Timestream/IoT Core/Secrets Manager/SQS/Kinesis at ~7/month per AZ
+- [Phase 01-foundation-device-connectivity-security]: rt-data route table has no internet route — all databases fully isolated from public internet
+- [Phase 01-foundation-device-connectivity-security]: Kinesis over direct Lambda for telemetry hot path — batch processing, 24h replay, decoupled ingestion
+- [Phase 01-foundation-device-connectivity-security]: errorAction on all IoT Rules routes to SQS DLQ (iot-rules-dlq) — no silent message loss
+- [Phase 01-foundation-device-connectivity-security]: Kinesis Firehose dynamic partitioning by year=/month=/day=/ — efficient Athena partition pruning
 
 ### Pending Todos
 
@@ -76,6 +78,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T15:37:39.357Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation-device-connectivity-security/01-CONTEXT.md
+Last session: 2026-03-27T16:06:25.648Z
+Stopped at: Completed 01-02-PLAN.md — Device Connectivity and Ingestion Layer
+Resume file: None
