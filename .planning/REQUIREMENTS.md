@@ -29,10 +29,10 @@ Requirements for the architecture design document deliverable.
 
 ### Storage
 
-- [ ] **STOR-01**: Architecture documents Amazon Timestream for time-series telemetry (hot storage with memory + magnetic tiers)
-- [ ] **STOR-02**: Architecture documents DynamoDB for device metadata, state, and latest-value cache
-- [ ] **STOR-03**: Architecture documents Aurora Serverless v2 for user/role/alert-rule relational data
-- [ ] **STOR-04**: Architecture includes comparison table of storage alternatives with pros/cons and recommendation
+- [x] **STOR-01**: Architecture documents Amazon Timestream for time-series telemetry (hot storage with memory + magnetic tiers)
+- [x] **STOR-02**: Architecture documents DynamoDB for device metadata, state, and latest-value cache
+- [x] **STOR-03**: Architecture documents Aurora Serverless v2 for user/role/alert-rule relational data
+- [x] **STOR-04**: Architecture includes comparison table of storage alternatives with pros/cons and recommendation
 
 ### Alarm & Notifications
 
@@ -121,10 +121,10 @@ Deferred — optional bonus items not in primary scope.
 | PROC-01 | Phase 2 | Complete |
 | PROC-02 | Phase 2 | Complete |
 | PROC-03 | Phase 2 | Complete |
-| STOR-01 | Phase 2 | Pending |
-| STOR-02 | Phase 2 | Pending |
-| STOR-03 | Phase 2 | Pending |
-| STOR-04 | Phase 2 | Pending |
+| STOR-01 | Phase 2 | Complete |
+| STOR-02 | Phase 2 | Complete |
+| STOR-03 | Phase 2 | Complete |
+| STOR-04 | Phase 2 | Complete |
 | ALRM-01 | Phase 2 | Complete |
 | ALRM-02 | Phase 2 | Complete |
 | ALRM-03 | Phase 2 | Complete |

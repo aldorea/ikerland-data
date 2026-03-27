@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Completed 02-03-PLAN.md (alarm-notifications)
-last_updated: "2026-03-27T16:36:51.926Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 02-02-PLAN.md — storage layer documentation
+last_updated: "2026-03-27T16:37:14.616Z"
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -51,6 +51,7 @@ Plan: 3 of 3
 | Phase 01 P03 | 2m | 2 tasks | 1 files |
 | Phase 02-data-pipeline-storage-alarm-notifications P01 | 7 | 1 tasks | 1 files |
 | Phase 02-data-pipeline-storage-alarm-notifications P03 | 1m | 1 tasks | 1 files |
+| Phase 02-data-pipeline-storage-alarm-notifications P02 | 2m | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,9 @@ Recent decisions affecting current work:
 - [Phase 02-data-pipeline-storage-alarm-notifications]: DLQ placement rule: ESM consumers use DestinationConfig.OnFailure; async-invoked Lambdas use function-level DeadLetterConfig
 - [Phase 02-data-pipeline-storage-alarm-notifications]: D-08/D-09: IoT Rules Engine WHERE clause as coarse pre-filter + DynamoDB conditional write (attribute_not_exists) with 15-min TTL for alarm deduplication
 - [Phase 02-data-pipeline-storage-alarm-notifications]: D-10/D-11: SNS alarm-notifications fan-out hub + EventBridge iot-alarm-bus extensibility layer for future notification channels (zero code changes)
+- [Phase 02-data-pipeline-storage-alarm-notifications]: Timestream for hot time-series: 1000x faster range queries, auto memory-to-magnetic tiering, no per-query cost on memory tier
+- [Phase 02-data-pipeline-storage-alarm-notifications]: RDS Proxy required (not optional) for Lambda → Aurora — connection exhaustion is #1 production failure mode for this pattern
+- [Phase 02-data-pipeline-storage-alarm-notifications]: Aurora Serverless v2 minimum 0.5 ACU (~/month idle) — not zero-cost, documented honestly
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T16:36:51.923Z
-Stopped at: Completed 02-03-PLAN.md (alarm-notifications)
+Last session: 2026-03-27T16:37:14.612Z
+Stopped at: Completed 02-02-PLAN.md — storage layer documentation
 Resume file: None

@@ -48,7 +48,7 @@ Plans:
 **Plans**: 3 plans
 Plans:
 - [x] 02-01-PLAN.md — Data Pipeline Processing (Kinesis batch Lambda consumer, JSON transformation, comparison table, DLQ configuration)
-- [ ] 02-02-PLAN.md — Storage Layer (Timestream, DynamoDB, Aurora Serverless v2, two comparison tables, VPC placement)
+- [x] 02-02-PLAN.md — Storage Layer (Timestream, DynamoDB, Aurora Serverless v2, two comparison tables, VPC placement)
 - [x] 02-03-PLAN.md — Alarm Notifications (IoT Rules threshold detection, Lambda evaluator, deduplication, SNS/SES, EventBridge extensibility)
 
 ### Phase 3: Data Lake & ETL
