@@ -12,22 +12,21 @@ A well-documented, decoupled, scalable, and cost-effective AWS architecture that
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ IoT data ingestion: devices send telemetry, config, and alarm events (JSON) hourly + event-driven — Phase 1
+- ✓ Database access restricted to internal AWS services only (no public access) — Phase 1
+- ✓ Security components documented (encryption, IAM, VPC, etc.) — Phase 1
+- ✓ Device command/configuration push via web (handling normally-disconnected devices) — Phase 1
 
 ### Active
 
-- [ ] IoT data ingestion: devices send telemetry, config, and alarm events (JSON) hourly + event-driven
 - [ ] Scalable to thousands of devices
 - [ ] Data processing pipeline: format, filter, and route messages by type
 - [ ] Alarm notification system: email and other channels
 - [ ] REST API deployed on the platform
 - [ ] Web application for data visualization, deployed on the platform
-- [ ] Device command/configuration push via web (handling normally-disconnected devices)
 - [ ] Periodic ETL to Data Lake in AI-ready format (Parquet/similar)
-- [ ] Database access restricted to internal AWS services only (no public access)
 - [ ] Architecture diagrams with Mermaid showing all components and data flows
 - [ ] Technology comparison tables: for each key decision, list alternatives with pros/cons and recommendation
-- [ ] Security components documented (encryption, IAM, VPC, etc.)
 - [ ] Cost optimization analysis
 - [ ] Clear documentation of the complete architecture flow
 
