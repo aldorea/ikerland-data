@@ -47,9 +47,9 @@ Plans:
   5. SQS dead-letter queues are documented for all Lambda consumers — no silent data loss paths exist in the described architecture
 **Plans**: 3 plans
 Plans:
-- [x] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
-- [x] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
-- [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
+- [ ] 02-01-PLAN.md — Data Pipeline Processing (Kinesis batch Lambda consumer, JSON transformation, comparison table, DLQ configuration)
+- [ ] 02-02-PLAN.md — Storage Layer (Timestream, DynamoDB, Aurora Serverless v2, two comparison tables, VPC placement)
+- [ ] 02-03-PLAN.md — Alarm Notifications (IoT Rules threshold detection, Lambda evaluator, deduplication, SNS/SES, EventBridge extensibility)
 
 ### Phase 3: Data Lake & ETL
 **Goal**: The architecture document describes a complete, AI-ready Data Lake with medallion structure, Parquet partitioning, Glue ETL job, and Athena query access — demonstrating understanding of cost optimization through partitioning and format conversion
@@ -60,11 +60,9 @@ Plans:
   2. A reader can see the Hive-style partition scheme (e.g., `year=/month=/day=/device_type=`) and a concrete example illustrating how this reduces Athena scan cost vs an unpartitioned layout
   3. The ETL trigger mechanism (periodic schedule vs event-driven via EventBridge) is documented with the chosen approach justified
   4. A reader can confirm that Athena queries the Silver/Gold Parquet layer — not raw JSON — and understands the workgroup configuration and cost controls in place
-**Plans**: 3 plans
+**Plans**: [To be planned]
 Plans:
-- [x] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
-- [x] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
-- [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
+- [To be planned]
 
 ### Phase 4: API, Web Frontend & Documentation Quality
 **Goal**: The architecture document is complete: REST API and web frontend are fully described, and all cross-cutting quality artifacts (overview Mermaid diagram, per-layer diagrams, sequence diagrams for key flows, technology comparison tables, and cost analysis) are present and evaluator-ready
@@ -77,11 +75,9 @@ Plans:
   4. Each major technology decision (IoT Core entry point, Kinesis vs alternatives, Timestream vs relational, Grafana vs SPA, API Gateway HTTP vs REST v1) has a comparison table with at least two alternatives, pros/cons, and a clear recommendation
   5. The cost analysis section provides an estimated monthly cost range for 1,000–10,000 devices at hourly telemetry, broken down by major service category, with cost optimization strategies identified
 **UI hint**: yes
-**Plans**: 3 plans
+**Plans**: [To be planned]
 Plans:
-- [ ] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
-- [ ] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
-- [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
+- [To be planned]
 
 ## Progress
 
@@ -91,6 +87,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
-| 2. Data Pipeline, Storage & Alarm Notifications | 0/TBD | Not started | - |
+| 2. Data Pipeline, Storage & Alarm Notifications | 0/3 | Planned | - |
 | 3. Data Lake & ETL | 0/TBD | Not started | - |
 | 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |
