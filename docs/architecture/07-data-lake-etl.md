@@ -272,17 +272,55 @@ The 1 GB cutoff prevents a misconfigured query from scanning the full year Silve
 
 ### 5c. Athena vs Redshift Spectrum vs EMR Comparison
 
-| Alternative | Pros | Cons | Cost | Recommendation |
-|-------------|------|------|------|----------------|
-| Amazon Athena (serverless) | Zero infrastructure, pay-per-query ($5/TB), native Glue Catalog integration, no cluster idle cost | Higher per-TB cost than Redshift Spectrum at sustained high volume; 1–5 second query startup | $5/TB scanned | **Recommended** — ad-hoc and bursty IoT analytics queries |
-| Amazon Redshift Spectrum | Lower per-TB cost at high volume, integrates with Redshift ML for in-database ML | Requires resident Redshift cluster ($0.25/node-hour minimum), cluster management overhead, not serverless | $5/TB (Spectrum) + $0.25+/hr cluster | Consider if consistently running >10 TB/day of queries and already using Redshift |
-| Amazon EMR (Spark/Hive) | Full Spark ecosystem — complex ML, custom UDFs, streaming + batch in one platform | Cluster provisioning, capacity planning, Spark expertise required, not serverless | EC2 instance cost + EMR surcharge | Use only for complex ML pipelines or when Spark transformations exceed Glue's scope |
+| Service | Best For | Pros | Cons | Cost Model | Recommendation |
+|---------|----------|------|------|------------|----------------|
+| Amazon Athena | Ad-hoc SQL queries on well-partitioned Parquet Data Lake | Serverless, zero infrastructure, pay-per-query, native Glue Catalog integration | Not suitable for sub-second latency or high-concurrency dashboards | $5/TB scanned (Parquet + partitioning reduces this 80-90%) | **Recommended** for this architecture — ad-hoc analytics on IoT telemetry Data Lake |
+| Amazon Redshift Spectrum | Consistent high-volume queries with a resident Redshift cluster | Leverages existing Redshift compute, concurrent query scaling, result caching | Requires a running Redshift cluster ($0.25/hour minimum), adds operational overhead | Redshift cluster cost + $5/TB scanned on S3 | Consider if query volume grows beyond Athena's per-query pricing model |
+| Amazon EMR (Spark SQL) | Complex ML/ETL pipelines beyond SQL, custom Spark applications | Full Spark ecosystem, notebook support (EMR Studio), custom UDFs | Cluster management (even with managed scaling), higher minimum cost | EC2 instance hours + EMR premium | Consider only for complex ML workloads that exceed Athena's SQL capabilities |
+
+For this IoT platform, Athena is the clear choice. The Data Lake receives hourly device telemetry from thousands of devices — query patterns are ad-hoc analytical queries run by operators and data engineers, not high-concurrency dashboard queries. The well-partitioned Parquet format in Silver/Gold zones ensures Athena scans minimal data per query.
+
+### 5d. Example Athena Queries
+
+The following queries illustrate typical IoT Data Lake use cases using the registered Glue Catalog tables. All queries target Silver or Gold — never Bronze.
+
+```sql
+-- Average temperature by device type for the last 7 days (queries Gold)
+SELECT device_type, AVG(avg_temperature) as fleet_avg
+FROM datalake.gold_hourly_metrics
+WHERE year = '2024' AND month = '03' AND day BETWEEN '08' AND '15'
+GROUP BY device_type;
+
+-- Raw telemetry for a specific device type on a specific day (queries Silver)
+SELECT thing_name, event_time, temperature, humidity
+FROM datalake.silver_telemetry
+WHERE year = '2024' AND month = '03' AND day = '15'
+  AND device_type = 'temperature-sensor'
+ORDER BY event_time DESC
+LIMIT 100;
+
+-- Device health check: last-seen and daily uptime (queries Gold)
+SELECT thing_name, last_seen_time, uptime_pct
+FROM datalake.gold_device_health
+WHERE year = '2024' AND month = '03' AND day = '15'
+ORDER BY uptime_pct ASC
+LIMIT 20;
+```
+
+Both queries use partition keys in the `WHERE` clause — Athena's engine prunes all non-matching S3 partitions before reading any data. The Gold query scans only pre-aggregated rows; the Silver query scans typed Parquet columns, not raw JSON fields.
 
 ---
 
 ## 6. Lake Formation Access Control
 
-AWS Lake Formation provides fine-grained access control over the Data Lake, applied at the column and row level before queries reach S3. It governs Athena queries and Glue job access centrally — without requiring per-table S3 bucket policies per IAM principal.
+AWS Lake Formation provides fine-grained access control over the Data Lake, governing multi-team access beyond what raw S3 bucket policies can express. Lake Formation applies column-level security (restricting which columns a team can query) and row-level filters (restricting which partitions or rows a team can access) before any query reaches S3.
+
+**Example use cases:**
+- A maintenance team can query `device_health` Gold data but cannot access raw telemetry in Silver.
+- An analytics team can query all Silver columns except `thing_name` (PII masking via column-level grant exclusion).
+- A per-tenant operator sees only devices in their facility (row-level filter on a tenant partition key).
+
+Lake Formation intercepts Athena and Glue queries at the AWS service layer, enforcing access before the query reaches S3. This is more granular than S3 bucket policies, which can only control access at the object/prefix level. For multi-team environments, Lake Formation is the recommended access control plane — a single governance layer replaces per-table per-IAM-role S3 bucket policy combinations.
 
 ### Access Model
 
@@ -307,15 +345,17 @@ Lake Formation intercepts all Athena and Glue queries at the AWS service layer. 
 
 ## Design Notes and Anti-Patterns
 
-> **Bronze immutability is not optional.** Never write Glue ETL output back to the Bronze prefix. Bronze is the audit trail and replay source. If Silver has a transformation bug, re-run the Bronze→Silver ETL job on the original Bronze data. Overwriting Bronze destroys this capability permanently.
+> **Anti-Pattern 1 — Never query Bronze via Athena.** Never query Bronze via Athena for analytical workloads. Bronze JSON has no columnar optimization. Every query scans every byte. A Bronze query costs 8–10× more than the equivalent Silver Parquet query. Use `BytesScannedCutoffPerQuery` as a safety net, and restrict Athena access to Silver and Gold tables via Lake Formation grants.
 
-> **Do not run Athena directly against Bronze JSON.** Every Bronze query scans every byte of every record in the partition — no column pruning, no predicate pushdown. Use Silver or Gold for all Athena queries.
+> **Anti-Pattern 2 — Never partition by device_id.** Never partition by `device_id`. Thousands of device-specific partitions create the small-file problem. Each partition produces tiny files. Glue and Athena pay per S3 LIST call, and small files degrade query performance. Partition by `device_type` (3–10 values) not `device_id` (thousands).
 
-> **Do not partition by `device_id`.** At thousands-of-devices scale, per-device S3 partitions create millions of tiny Parquet files. Glue LIST calls scale with partition count; each small file adds planning overhead. Partition by `device_type` (3–10 values) to keep files large and partition trees shallow.
+> **Anti-Pattern 3 — Never write ETL output to Bronze.** Never write ETL output to Bronze. Bronze is the immutable audit trail and replay source. Enforce via S3 bucket policy: deny `s3:PutObject` on the `bronze/` prefix for the Glue ETL IAM role. The ETL role should have `s3:GetObject` on Bronze and `s3:PutObject` on Silver only.
 
-> **Do not use Glue Crawlers as the sole partition management mechanism for scheduled ETL.** Crawlers run on their own schedule, introduce minutes of latency, and can overwrite explicitly defined column types when source JSON fields appear with different inferred types. Use explicit `ALTER TABLE ADD IF NOT EXISTS PARTITION` inside the ETL job for deterministic partition registration.
+> **Anti-Pattern 4 — Never rely solely on Glue Crawler for schema management.** Crawlers can introduce schema drift when new fields appear. For a known, stable IoT telemetry schema, define the Glue Catalog table schema explicitly. Use Crawlers only for initial schema discovery, not for scheduled production partition management.
 
-> **Configure CloudWatch alarms on Glue job failures.** A failed Bronze→Silver job leaves Silver stale. Set a CloudWatch Alarm on the Glue job metric `glue.driver.aggregate.numFailedTasks > 0` or monitor the Glue job `Failed` run state and route to SNS for immediate ops notification.
+> **Anti-Pattern 5 — Always configure Glue job failure alerting.** Always configure Glue job failure alerting. Glue jobs that fail silently leave Silver/Gold stale. Configure a CloudWatch Alarm on the Glue job `Failed` metric and route to SNS for operator notification. A failed Bronze→Silver job at 01:00 UTC means the 02:00 UTC Silver→Gold job runs on yesterday's Gold — silent staleness.
+
+> **Anti-Pattern 6 — Always create Glue Catalog table before Firehose Parquet conversion.** Always create the Glue Catalog table before enabling Firehose Parquet conversion. Firehose Parquet conversion requires a pre-existing Glue Catalog table. Without it, Firehose silently falls back to JSON delivery. This is a setup ordering requirement: create the `datalake.bronze_telemetry` Glue Catalog table first, then enable Parquet conversion in the Firehose delivery stream configuration.
 
 ---
 
