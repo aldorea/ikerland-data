@@ -47,9 +47,9 @@ Plans:
   5. SQS dead-letter queues are documented for all Lambda consumers — no silent data loss paths exist in the described architecture
 **Plans**: 3 plans
 Plans:
-- [ ] 02-01-PLAN.md — Data Pipeline Processing (Kinesis batch Lambda consumer, JSON transformation, comparison table, DLQ configuration)
+- [x] 02-01-PLAN.md — Data Pipeline Processing (Kinesis batch Lambda consumer, JSON transformation, comparison table, DLQ configuration)
 - [ ] 02-02-PLAN.md — Storage Layer (Timestream, DynamoDB, Aurora Serverless v2, two comparison tables, VPC placement)
-- [ ] 02-03-PLAN.md — Alarm Notifications (IoT Rules threshold detection, Lambda evaluator, deduplication, SNS/SES, EventBridge extensibility)
+- [x] 02-03-PLAN.md — Alarm Notifications (IoT Rules threshold detection, Lambda evaluator, deduplication, SNS/SES, EventBridge extensibility)
 
 ### Phase 3: Data Lake & ETL
 **Goal**: The architecture document describes a complete, AI-ready Data Lake with medallion structure, Parquet partitioning, Glue ETL job, and Athena query access — demonstrating understanding of cost optimization through partitioning and format conversion
@@ -87,6 +87,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
-| 2. Data Pipeline, Storage & Alarm Notifications | 0/3 | Planned | - |
+| 2. Data Pipeline, Storage & Alarm Notifications | 2/3 | In Progress|  |
 | 3. Data Lake & ETL | 0/TBD | Not started | - |
 | 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |

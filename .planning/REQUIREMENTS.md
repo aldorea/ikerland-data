@@ -23,9 +23,9 @@ Requirements for the architecture design document deliverable.
 
 ### Processing
 
-- [ ] **PROC-01**: Architecture documents Lambda-based message processing with type-dependent routing
-- [ ] **PROC-02**: Architecture documents SQS dead-letter queues for failed processing (no silent data loss)
-- [ ] **PROC-03**: Architecture documents batched processing via Kinesis (not per-message Lambda invocation) for telemetry hot path
+- [x] **PROC-01**: Architecture documents Lambda-based message processing with type-dependent routing
+- [x] **PROC-02**: Architecture documents SQS dead-letter queues for failed processing (no silent data loss)
+- [x] **PROC-03**: Architecture documents batched processing via Kinesis (not per-message Lambda invocation) for telemetry hot path
 
 ### Storage
 
@@ -118,9 +118,9 @@ Deferred — optional bonus items not in primary scope.
 | DEVM-02 | Phase 1 | Complete |
 | DEVM-03 | Phase 1 | Complete |
 | DEVM-04 | Phase 1 | Complete |
-| PROC-01 | Phase 2 | Pending |
-| PROC-02 | Phase 2 | Pending |
-| PROC-03 | Phase 2 | Pending |
+| PROC-01 | Phase 2 | Complete |
+| PROC-02 | Phase 2 | Complete |
+| PROC-03 | Phase 2 | Complete |
 | STOR-01 | Phase 2 | Pending |
 | STOR-02 | Phase 2 | Pending |
 | STOR-03 | Phase 2 | Pending |
