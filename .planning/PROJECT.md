@@ -18,13 +18,13 @@ A well-documented, decoupled, scalable, and cost-effective AWS architecture that
 - ✓ Device command/configuration push via web (handling normally-disconnected devices) — Phase 1
 - ✓ Data processing pipeline: format, filter, and route messages by type — Phase 2
 - ✓ Alarm notification system: email and other channels — Phase 2
+- ✓ Periodic ETL to Data Lake in AI-ready format (Parquet/similar) — Phase 3
 
 ### Active
 
 - [ ] Scalable to thousands of devices
 - [ ] REST API deployed on the platform
 - [ ] Web application for data visualization, deployed on the platform
-- [ ] Periodic ETL to Data Lake in AI-ready format (Parquet/similar)
 - [ ] Architecture diagrams with Mermaid showing all components and data flows
 - [ ] Technology comparison tables: for each key decision, list alternatives with pros/cons and recommendation
 - [ ] Cost optimization analysis
@@ -82,4 +82,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-27 after Phase 2 completion*
+*Last updated: 2026-03-27 after Phase 3 completion*
