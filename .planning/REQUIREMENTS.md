@@ -16,10 +16,10 @@ Requirements for the architecture design document deliverable.
 
 ### Device Management
 
-- [ ] **DEVM-01**: Architecture documents Device Shadow for command/config delivery to normally-disconnected devices (desired/reported/delta flow)
-- [ ] **DEVM-02**: Architecture includes sequence diagram showing full command delivery lifecycle (web → API → Shadow → device reconnect → delta apply → reported update)
-- [ ] **DEVM-03**: Architecture documents X.509 per-device certificate authentication with IoT policy variables (`${iot:ThingName}`)
-- [ ] **DEVM-04**: Architecture documents device fleet grouping via Thing Types and Thing Groups
+- [x] **DEVM-01**: Architecture documents Device Shadow for command/config delivery to normally-disconnected devices (desired/reported/delta flow)
+- [x] **DEVM-02**: Architecture includes sequence diagram showing full command delivery lifecycle (web → API → Shadow → device reconnect → delta apply → reported update)
+- [x] **DEVM-03**: Architecture documents X.509 per-device certificate authentication with IoT policy variables (`${iot:ThingName}`)
+- [x] **DEVM-04**: Architecture documents device fleet grouping via Thing Types and Thing Groups
 
 ### Processing
 
@@ -114,10 +114,10 @@ Deferred — optional bonus items not in primary scope.
 | INGT-02 | Phase 1 | Complete |
 | INGT-03 | Phase 1 | Complete |
 | INGT-04 | Phase 1 | Complete |
-| DEVM-01 | Phase 1 | Pending |
-| DEVM-02 | Phase 1 | Pending |
-| DEVM-03 | Phase 1 | Pending |
-| DEVM-04 | Phase 1 | Pending |
+| DEVM-01 | Phase 1 | Complete |
+| DEVM-02 | Phase 1 | Complete |
+| DEVM-03 | Phase 1 | Complete |
+| DEVM-04 | Phase 1 | Complete |
 | PROC-01 | Phase 2 | Pending |
 | PROC-02 | Phase 2 | Pending |
 | PROC-03 | Phase 2 | Pending |

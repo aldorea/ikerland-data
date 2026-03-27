@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to execute
-stopped_at: Completed 01-02-PLAN.md — Device Connectivity and Ingestion Layer
-last_updated: "2026-03-27T16:06:25.650Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-03-27T16:07:06.086Z"
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
 ---
 
 # Project State
@@ -48,6 +48,7 @@ Plan: 3 of 3
 *Updated after each plan completion*
 | Phase 01-foundation-device-connectivity-security P01 | 2 | 2 tasks | 1 files |
 | Phase 01-foundation-device-connectivity-security P02 | 1 | 2 tasks | 1 files |
+| Phase 01 P03 | 2m | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation-device-connectivity-security]: Kinesis over direct Lambda for telemetry hot path — batch processing, 24h replay, decoupled ingestion
 - [Phase 01-foundation-device-connectivity-security]: errorAction on all IoT Rules routes to SQS DLQ (iot-rules-dlq) — no silent message loss
 - [Phase 01-foundation-device-connectivity-security]: Kinesis Firehose dynamic partitioning by year=/month=/day=/ — efficient Athena partition pruning
+- [Phase 01]: D-05 Fleet Provisioning by Claim selected for zero-touch device onboarding at scale — documented with full 10-step sequence and provisioning comparison table
+- [Phase 01]: D-06 IoT policies scoped with ${iot:ThingName} — documented with full policy JSON and security anti-pattern warning against iot:* wildcard
+- [Phase 01]: D-07 Certificate rotation marked as v2 consideration — not part of initial architecture
 
 ### Pending Todos
 
@@ -78,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T16:06:25.648Z
-Stopped at: Completed 01-02-PLAN.md — Device Connectivity and Ingestion Layer
+Last session: 2026-03-27T16:07:06.083Z
+Stopped at: Completed 01-03-PLAN.md
 Resume file: None

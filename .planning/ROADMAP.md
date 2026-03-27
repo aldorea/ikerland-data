@@ -12,7 +12,7 @@ This roadmap structures the architecture design document as four progressive doc
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation, Device Connectivity & Security** - Document VPC/IAM/KMS security foundation and AWS IoT Core device layer (ingestion, certificates, Rules Engine, Device Shadow)
+- [x] **Phase 1: Foundation, Device Connectivity & Security** - Document VPC/IAM/KMS security foundation and AWS IoT Core device layer (ingestion, certificates, Rules Engine, Device Shadow) (completed 2026-03-27)
 - [ ] **Phase 2: Data Pipeline, Storage & Alarm Notifications** - Document the hot processing path (Kinesis → Lambda → Timestream/DynamoDB) and the full alarm notification pipeline (Rules Engine → SNS → EventBridge)
 - [ ] **Phase 3: Data Lake & ETL** - Document the cold path S3 medallion Data Lake with Glue ETL, Parquet partitioning, and Athena query layer
 - [ ] **Phase 4: API, Web Frontend & Documentation Quality** - Document the REST API (API Gateway + Cognito), SPA web frontend (S3 + CloudFront), and produce all cross-cutting quality artifacts (overview diagram, sequence diagrams, comparison tables, cost analysis)
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
 - [x] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
-- [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
+- [x] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
 
 ### Phase 2: Data Pipeline, Storage & Alarm Notifications
 **Goal**: The architecture document fully describes how telemetry flows from IoT Core through Kinesis into Timestream/DynamoDB (hot path), and how alarm events are detected, routed, deduplicated, and delivered to multiple notification channels
@@ -62,8 +62,8 @@ Plans:
   4. A reader can confirm that Athena queries the Silver/Gold Parquet layer — not raw JSON — and understands the workgroup configuration and cost controls in place
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
-- [ ] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
+- [x] 01-01-PLAN.md — Security Foundation (VPC topology, IAM roles, KMS encryption, TLS, WAF)
+- [x] 01-02-PLAN.md — Device Connectivity & Ingestion (IoT Core, topic namespace, Rules Engine, Kinesis)
 - [ ] 01-03-PLAN.md — Device Management (Device Shadow sequence, Fleet Provisioning, IoT policy, Thing Types/Groups)
 
 ### Phase 4: API, Web Frontend & Documentation Quality
@@ -90,7 +90,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation, Device Connectivity & Security | 2/3 | In Progress|  |
+| 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
 | 2. Data Pipeline, Storage & Alarm Notifications | 0/TBD | Not started | - |
 | 3. Data Lake & ETL | 0/TBD | Not started | - |
 | 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |
