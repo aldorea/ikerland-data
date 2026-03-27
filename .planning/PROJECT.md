@@ -16,12 +16,12 @@ A well-documented, decoupled, scalable, and cost-effective AWS architecture that
 - ✓ Database access restricted to internal AWS services only (no public access) — Phase 1
 - ✓ Security components documented (encryption, IAM, VPC, etc.) — Phase 1
 - ✓ Device command/configuration push via web (handling normally-disconnected devices) — Phase 1
+- ✓ Data processing pipeline: format, filter, and route messages by type — Phase 2
+- ✓ Alarm notification system: email and other channels — Phase 2
 
 ### Active
 
 - [ ] Scalable to thousands of devices
-- [ ] Data processing pipeline: format, filter, and route messages by type
-- [ ] Alarm notification system: email and other channels
 - [ ] REST API deployed on the platform
 - [ ] Web application for data visualization, deployed on the platform
 - [ ] Periodic ETL to Data Lake in AI-ready format (Parquet/similar)
@@ -82,4 +82,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-27 after initialization*
+*Last updated: 2026-03-27 after Phase 2 completion*
