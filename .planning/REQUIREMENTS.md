@@ -110,53 +110,53 @@ Deferred — optional bonus items not in primary scope.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INGT-01 | Pending | Pending |
-| INGT-02 | Pending | Pending |
-| INGT-03 | Pending | Pending |
-| INGT-04 | Pending | Pending |
-| DEVM-01 | Pending | Pending |
-| DEVM-02 | Pending | Pending |
-| DEVM-03 | Pending | Pending |
-| DEVM-04 | Pending | Pending |
-| PROC-01 | Pending | Pending |
-| PROC-02 | Pending | Pending |
-| PROC-03 | Pending | Pending |
-| STOR-01 | Pending | Pending |
-| STOR-02 | Pending | Pending |
-| STOR-03 | Pending | Pending |
-| STOR-04 | Pending | Pending |
-| ALRM-01 | Pending | Pending |
-| ALRM-02 | Pending | Pending |
-| ALRM-03 | Pending | Pending |
-| ALRM-04 | Pending | Pending |
-| API-01 | Pending | Pending |
-| API-02 | Pending | Pending |
-| API-03 | Pending | Pending |
-| WEB-01 | Pending | Pending |
-| WEB-02 | Pending | Pending |
-| WEB-03 | Pending | Pending |
-| LAKE-01 | Pending | Pending |
-| LAKE-02 | Pending | Pending |
-| LAKE-03 | Pending | Pending |
-| LAKE-04 | Pending | Pending |
-| LAKE-05 | Pending | Pending |
-| SEC-01 | Pending | Pending |
-| SEC-02 | Pending | Pending |
-| SEC-03 | Pending | Pending |
-| SEC-04 | Pending | Pending |
-| SEC-05 | Pending | Pending |
-| SEC-06 | Pending | Pending |
-| DOC-01 | Pending | Pending |
-| DOC-02 | Pending | Pending |
-| DOC-03 | Pending | Pending |
-| DOC-04 | Pending | Pending |
-| DOC-05 | Pending | Pending |
+| INGT-01 | Phase 1 | Pending |
+| INGT-02 | Phase 1 | Pending |
+| INGT-03 | Phase 1 | Pending |
+| INGT-04 | Phase 1 | Pending |
+| DEVM-01 | Phase 1 | Pending |
+| DEVM-02 | Phase 1 | Pending |
+| DEVM-03 | Phase 1 | Pending |
+| DEVM-04 | Phase 1 | Pending |
+| PROC-01 | Phase 2 | Pending |
+| PROC-02 | Phase 2 | Pending |
+| PROC-03 | Phase 2 | Pending |
+| STOR-01 | Phase 2 | Pending |
+| STOR-02 | Phase 2 | Pending |
+| STOR-03 | Phase 2 | Pending |
+| STOR-04 | Phase 2 | Pending |
+| ALRM-01 | Phase 2 | Pending |
+| ALRM-02 | Phase 2 | Pending |
+| ALRM-03 | Phase 2 | Pending |
+| ALRM-04 | Phase 2 | Pending |
+| API-01 | Phase 4 | Pending |
+| API-02 | Phase 4 | Pending |
+| API-03 | Phase 4 | Pending |
+| WEB-01 | Phase 4 | Pending |
+| WEB-02 | Phase 4 | Pending |
+| WEB-03 | Phase 4 | Pending |
+| LAKE-01 | Phase 3 | Pending |
+| LAKE-02 | Phase 3 | Pending |
+| LAKE-03 | Phase 3 | Pending |
+| LAKE-04 | Phase 3 | Pending |
+| LAKE-05 | Phase 3 | Pending |
+| SEC-01 | Phase 1 | Pending |
+| SEC-02 | Phase 1 | Pending |
+| SEC-03 | Phase 1 | Pending |
+| SEC-04 | Phase 1 | Pending |
+| SEC-05 | Phase 1 | Pending |
+| SEC-06 | Phase 1 | Pending |
+| DOC-01 | Phase 4 | Pending |
+| DOC-02 | Phase 4 | Pending |
+| DOC-03 | Phase 4 | Pending |
+| DOC-04 | Phase 4 | Pending |
+| DOC-05 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 41 total
-- Mapped to phases: 0
-- Unmapped: 41 ⚠️
+- Mapped to phases: 41
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-27*
-*Last updated: 2026-03-27 after initial definition*
+*Last updated: 2026-03-27 after roadmap creation — all 41 requirements mapped*
