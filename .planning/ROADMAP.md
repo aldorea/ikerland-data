@@ -62,7 +62,7 @@ Plans:
   4. A reader can confirm that Athena queries the Silver/Gold Parquet layer — not raw JSON — and understands the workgroup configuration and cost controls in place
 **Plans**: 2 plans
 Plans:
-- [ ] 03-01-PLAN.md — Medallion Architecture, ETL Pipeline & Partitioning (Bronze/Silver/Gold zones, cold-path Mermaid diagram, Glue ETL config with PySpark pseudo-code, trigger comparison table, Hive-style partitioning with cost example)
+- [x] 03-01-PLAN.md — Medallion Architecture, ETL Pipeline & Partitioning (Bronze/Silver/Gold zones, cold-path Mermaid diagram, Glue ETL config with PySpark pseudo-code, trigger comparison table, Hive-style partitioning with cost example)
 - [ ] 03-02-PLAN.md — Athena Query Layer, Lake Formation & Design Notes (Athena workgroup config, query comparison table, Lake Formation access control, anti-patterns, cross-references)
 
 ### Phase 4: API, Web Frontend & Documentation Quality
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
 | 2. Data Pipeline, Storage & Alarm Notifications | 2/3 | In Progress|  |
-| 3. Data Lake & ETL | 0/2 | Not started | - |
+| 3. Data Lake & ETL | 1/2 | In Progress|  |
 | 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |

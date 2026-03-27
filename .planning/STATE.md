@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to plan
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-27T18:32:33.302Z"
+status: Ready to execute
+stopped_at: Completed 03-data-lake-etl 03-01-PLAN.md
+last_updated: "2026-03-27T19:38:04.520Z"
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 8
+  completed_plans: 7
 ---
 
 # Project State
@@ -19,12 +19,12 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-27)
 
 **Core value:** A well-documented, decoupled, scalable, and cost-effective AWS architecture with justified design decisions — for evaluator assessment of cloud architecture competence
-**Current focus:** Phase 02 — data-pipeline-storage-alarm-notifications
+**Current focus:** Phase 03 — data-lake-etl
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
+Phase: 03 (data-lake-etl) — EXECUTING
+Plan: 2 of 2
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Plan: Not started
 | Phase 02-data-pipeline-storage-alarm-notifications P01 | 7 | 1 tasks | 1 files |
 | Phase 02-data-pipeline-storage-alarm-notifications P03 | 1m | 1 tasks | 1 files |
 | Phase 02-data-pipeline-storage-alarm-notifications P02 | 2m | 1 tasks | 1 files |
+| Phase 03-data-lake-etl P01 | 3m | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -79,6 +80,9 @@ Recent decisions affecting current work:
 - [Phase 02-data-pipeline-storage-alarm-notifications]: Timestream for hot time-series: 1000x faster range queries, auto memory-to-magnetic tiering, no per-query cost on memory tier
 - [Phase 02-data-pipeline-storage-alarm-notifications]: RDS Proxy required (not optional) for Lambda → Aurora — connection exhaustion is #1 production failure mode for this pattern
 - [Phase 02-data-pipeline-storage-alarm-notifications]: Aurora Serverless v2 minimum 0.5 ACU (~/month idle) — not zero-cost, documented honestly
+- [Phase 03-data-lake-etl]: Medallion architecture (Bronze/Silver/Gold) in single S3 bucket — prefix separation, Glue Catalog registration per zone, explicit ALTER TABLE partition registration over Glue Crawler
+- [Phase 03-data-lake-etl]: EventBridge Scheduler cron over S3-event-driven ETL — hourly IoT telemetry doesn't require sub-hour latency; decoupled, timezone-aware, built-in retry/DLQ
+- [Phase 03-data-lake-etl]: Partition by device_type (3-10 values) not device_id (thousands) — prevents small-file problem; Athena queries Silver/Gold only, never Bronze JSON
 
 ### Pending Todos
 
@@ -92,6 +96,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-27T18:32:33.299Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-data-lake-etl/03-CONTEXT.md
+Last session: 2026-03-27T19:38:04.517Z
+Stopped at: Completed 03-data-lake-etl 03-01-PLAN.md
+Resume file: None

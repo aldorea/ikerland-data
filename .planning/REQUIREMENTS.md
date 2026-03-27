@@ -55,11 +55,11 @@ Requirements for the architecture design document deliverable.
 
 ### Data Lake & ETL
 
-- [ ] **LAKE-01**: Architecture documents S3 Data Lake with medallion pattern (Bronze/Silver/Gold zones)
-- [ ] **LAKE-02**: Architecture documents AWS Glue ETL for JSON → Parquet transformation
-- [ ] **LAKE-03**: Architecture documents periodic/event-driven ETL trigger from database to Data Lake
+- [x] **LAKE-01**: Architecture documents S3 Data Lake with medallion pattern (Bronze/Silver/Gold zones)
+- [x] **LAKE-02**: Architecture documents AWS Glue ETL for JSON → Parquet transformation
+- [x] **LAKE-03**: Architecture documents periodic/event-driven ETL trigger from database to Data Lake
 - [ ] **LAKE-04**: Architecture documents Athena for ad-hoc SQL queries on Parquet data
-- [ ] **LAKE-05**: Architecture documents Hive-style partitioning by device and date for query cost optimization
+- [x] **LAKE-05**: Architecture documents Hive-style partitioning by device and date for query cost optimization
 
 ### Security & Networking
 
@@ -135,11 +135,11 @@ Deferred — optional bonus items not in primary scope.
 | WEB-01 | Phase 4 | Pending |
 | WEB-02 | Phase 4 | Pending |
 | WEB-03 | Phase 4 | Pending |
-| LAKE-01 | Phase 3 | Pending |
-| LAKE-02 | Phase 3 | Pending |
-| LAKE-03 | Phase 3 | Pending |
+| LAKE-01 | Phase 3 | Complete |
+| LAKE-02 | Phase 3 | Complete |
+| LAKE-03 | Phase 3 | Complete |
 | LAKE-04 | Phase 3 | Pending |
-| LAKE-05 | Phase 3 | Pending |
+| LAKE-05 | Phase 3 | Complete |
 | SEC-01 | Phase 1 | Complete |
 | SEC-02 | Phase 1 | Complete |
 | SEC-03 | Phase 1 | Complete |
