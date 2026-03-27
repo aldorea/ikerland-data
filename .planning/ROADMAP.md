@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation, Device Connectivity & Security** - Document VPC/IAM/KMS security foundation and AWS IoT Core device layer (ingestion, certificates, Rules Engine, Device Shadow) (completed 2026-03-27)
 - [ ] **Phase 2: Data Pipeline, Storage & Alarm Notifications** - Document the hot processing path (Kinesis → Lambda → Timestream/DynamoDB) and the full alarm notification pipeline (Rules Engine → SNS → EventBridge)
-- [ ] **Phase 3: Data Lake & ETL** - Document the cold path S3 medallion Data Lake with Glue ETL, Parquet partitioning, and Athena query layer
+- [x] **Phase 3: Data Lake & ETL** - Document the cold path S3 medallion Data Lake with Glue ETL, Parquet partitioning, and Athena query layer (completed 2026-03-27)
 - [ ] **Phase 4: API, Web Frontend & Documentation Quality** - Document the REST API (API Gateway + Cognito), SPA web frontend (S3 + CloudFront), and produce all cross-cutting quality artifacts (overview diagram, sequence diagrams, comparison tables, cost analysis)
 
 ## Phase Details
@@ -63,7 +63,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 03-01-PLAN.md — Medallion Architecture, ETL Pipeline & Partitioning (Bronze/Silver/Gold zones, cold-path Mermaid diagram, Glue ETL config with PySpark pseudo-code, trigger comparison table, Hive-style partitioning with cost example)
-- [ ] 03-02-PLAN.md — Athena Query Layer, Lake Formation & Design Notes (Athena workgroup config, query comparison table, Lake Formation access control, anti-patterns, cross-references)
+- [x] 03-02-PLAN.md — Athena Query Layer, Lake Formation & Design Notes (Athena workgroup config, query comparison table, Lake Formation access control, anti-patterns, cross-references)
 
 ### Phase 4: API, Web Frontend & Documentation Quality
 **Goal**: The architecture document is complete: REST API and web frontend are fully described, and all cross-cutting quality artifacts (overview Mermaid diagram, per-layer diagrams, sequence diagrams for key flows, technology comparison tables, and cost analysis) are present and evaluator-ready
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
 | 2. Data Pipeline, Storage & Alarm Notifications | 2/3 | In Progress|  |
-| 3. Data Lake & ETL | 1/2 | In Progress|  |
+| 3. Data Lake & ETL | 2/2 | Complete   | 2026-03-27 |
 | 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |
