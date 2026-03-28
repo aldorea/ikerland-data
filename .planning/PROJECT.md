@@ -22,13 +22,17 @@ A well-documented, decoupled, scalable, and cost-effective AWS architecture that
 
 ### Active
 
-- [ ] Scalable to thousands of devices
-- [ ] REST API deployed on the platform
-- [ ] Web application for data visualization, deployed on the platform
-- [ ] Architecture diagrams with Mermaid showing all components and data flows
-- [ ] Technology comparison tables: for each key decision, list alternatives with pros/cons and recommendation
-- [ ] Cost optimization analysis
-- [ ] Clear documentation of the complete architecture flow
+(All v1 requirements validated)
+
+### Recently Validated (Phase 4)
+
+- ✓ Scalable to thousands of devices — Phase 4 (cost analysis covers 1K–10K device range)
+- ✓ REST API deployed on the platform — Phase 4 (API Gateway HTTP API v2 + Lambda)
+- ✓ Web application for data visualization, deployed on the platform — Phase 4 (S3 + CloudFront SPA)
+- ✓ Architecture diagrams with Mermaid showing all components and data flows — Phase 4 (overview + per-layer diagrams)
+- ✓ Technology comparison tables: for each key decision, list alternatives with pros/cons and recommendation — Phase 4 (9 comparison tables across all docs)
+- ✓ Cost optimization analysis — Phase 4 (per-service cost table + 7 optimization strategies)
+- ✓ Clear documentation of the complete architecture flow — Phase 4 (3 sequence diagrams + overview diagram)
 
 ### Out of Scope
 
@@ -82,4 +86,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-27 after Phase 3 completion*
+*Last updated: 2026-03-28 after Phase 4 completion — all v1 requirements validated, milestone v1.0 complete*
