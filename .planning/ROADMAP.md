@@ -76,9 +76,11 @@ Plans:
   4. Each major technology decision (IoT Core entry point, Kinesis vs alternatives, Timestream vs relational, Grafana vs SPA, API Gateway HTTP vs REST v1) has a comparison table with at least two alternatives, pros/cons, and a clear recommendation
   5. The cost analysis section provides an estimated monthly cost range for 1,000–10,000 devices at hourly telemetry, broken down by major service category, with cost optimization strategies identified
 **UI hint**: yes
-**Plans**: [To be planned]
+**Plans**: 3 plans
 Plans:
-- [To be planned]
+- [ ] 04-01-PLAN.md — API Layer (API Gateway HTTP API v2, Cognito JWT auth, endpoint groups, comparison tables, per-layer diagram)
+- [ ] 04-02-PLAN.md — Web Frontend (S3 + CloudFront OAC, SPA hosting, web-to-device command flow, hosting comparison table)
+- [ ] 04-03-PLAN.md — Overview, Sequences & Cost Analysis (top-level overview diagram, 3 sequence diagrams, cost table, optimization strategies, README index)
 
 ## Progress
 
@@ -90,4 +92,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
 | 2. Data Pipeline, Storage & Alarm Notifications | 2/3 | In Progress|  |
 | 3. Data Lake & ETL | 2/2 | Complete   | 2026-03-27 |
-| 4. API, Web Frontend & Documentation Quality | 0/TBD | Not started | - |
+| 4. API, Web Frontend & Documentation Quality | 0/3 | Not started | - |
