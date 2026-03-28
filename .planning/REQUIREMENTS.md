@@ -72,11 +72,11 @@ Requirements for the architecture design document deliverable.
 
 ### Documentation Quality
 
-- [ ] **DOC-01**: Architecture includes Mermaid diagram of the complete system (all layers and data flows)
+- [x] **DOC-01**: Architecture includes Mermaid diagram of the complete system (all layers and data flows)
 - [x] **DOC-02**: Architecture includes per-layer Mermaid diagrams with component detail
 - [x] **DOC-03**: Architecture includes technology comparison tables for each major decision (alternatives, pros, cons, recommendation)
-- [ ] **DOC-04**: Architecture includes cost optimization analysis with estimated monthly cost range
-- [ ] **DOC-05**: Architecture includes sequence diagrams for key flows (telemetry ingestion, alarm notification, command delivery)
+- [x] **DOC-04**: Architecture includes cost optimization analysis with estimated monthly cost range
+- [x] **DOC-05**: Architecture includes sequence diagrams for key flows (telemetry ingestion, alarm notification, command delivery)
 
 ## v2 Requirements
 
@@ -146,11 +146,11 @@ Deferred — optional bonus items not in primary scope.
 | SEC-04 | Phase 1 | Complete |
 | SEC-05 | Phase 1 | Complete |
 | SEC-06 | Phase 1 | Complete |
-| DOC-01 | Phase 4 | Pending |
+| DOC-01 | Phase 4 | Complete |
 | DOC-02 | Phase 4 | Complete |
 | DOC-03 | Phase 4 | Complete |
-| DOC-04 | Phase 4 | Pending |
-| DOC-05 | Phase 4 | Pending |
+| DOC-04 | Phase 4 | Complete |
+| DOC-05 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 41 total
