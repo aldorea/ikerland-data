@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to execute
-stopped_at: Completed 04-01-PLAN.md (08-api-layer.md)
-last_updated: "2026-03-28T10:15:14.712Z"
+stopped_at: Completed 04-02-PLAN.md (09-web-frontend.md)
+last_updated: "2026-03-28T10:19:16.868Z"
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 11
-  completed_plans: 9
+  completed_plans: 10
 ---
 
 # Project State
@@ -24,7 +24,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 ## Current Position
 
 Phase: 04 (api-web-frontend-documentation-quality) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Plan: 2 of 3
 | Phase 03-data-lake-etl P01 | 3m | 1 tasks | 1 files |
 | Phase 03-data-lake-etl P02 | 4 | 1 tasks | 1 files |
 | Phase 04-api-web-frontend-documentation-quality P01 | 8min | 1 tasks | 1 files |
+| Phase 04-api-web-frontend-documentation-quality P02 | 2min | 1 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -89,6 +90,8 @@ Recent decisions affecting current work:
 - [Phase 04-api-web-frontend-documentation-quality]: API Gateway HTTP API v2 selected: 70% cheaper than REST API v1, native JWT authorizer, zero idle cost
 - [Phase 04-api-web-frontend-documentation-quality]: Cognito User Pools for app user auth: native JWT issuance, native API GW JWT authorizer integration, 50K MAU free tier
 - [Phase 04-api-web-frontend-documentation-quality]: RDS Proxy mandatory (not optional) for Lambda → Aurora: connection pool exhaustion is #1 production failure mode
+- [Phase 04-api-web-frontend-documentation-quality]: OAC over OAI: uses cloudfront.amazonaws.com Service principal with AWS:SourceArn condition — supports SSE-KMS, current AWS recommendation since Aug 2022
+- [Phase 04-api-web-frontend-documentation-quality]: 202 Accepted for POST /devices/{thingName}/commands — command queued in Shadow, not yet executed; shadowVersion enables async delivery confirmation
 
 ### Pending Todos
 
@@ -102,6 +105,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-28T10:15:14.709Z
-Stopped at: Completed 04-01-PLAN.md (08-api-layer.md)
+Last session: 2026-03-28T10:19:16.865Z
+Stopped at: Completed 04-02-PLAN.md (09-web-frontend.md)
 Resume file: None

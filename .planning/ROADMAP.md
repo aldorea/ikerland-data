@@ -79,7 +79,7 @@ Plans:
 **Plans**: 3 plans
 Plans:
 - [x] 04-01-PLAN.md — API Layer (API Gateway HTTP API v2, Cognito JWT auth, endpoint groups, comparison tables, per-layer diagram)
-- [ ] 04-02-PLAN.md — Web Frontend (S3 + CloudFront OAC, SPA hosting, web-to-device command flow, hosting comparison table)
+- [x] 04-02-PLAN.md — Web Frontend (S3 + CloudFront OAC, SPA hosting, web-to-device command flow, hosting comparison table)
 - [ ] 04-03-PLAN.md — Overview, Sequences & Cost Analysis (top-level overview diagram, 3 sequence diagrams, cost table, optimization strategies, README index)
 
 ## Progress
@@ -92,4 +92,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation, Device Connectivity & Security | 3/3 | Complete   | 2026-03-27 |
 | 2. Data Pipeline, Storage & Alarm Notifications | 2/3 | In Progress|  |
 | 3. Data Lake & ETL | 2/2 | Complete   | 2026-03-27 |
-| 4. API, Web Frontend & Documentation Quality | 1/3 | In Progress|  |
+| 4. API, Web Frontend & Documentation Quality | 2/3 | In Progress|  |

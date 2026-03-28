@@ -49,9 +49,9 @@ Requirements for the architecture design document deliverable.
 
 ### Web Application
 
-- [ ] **WEB-01**: Architecture documents S3 + CloudFront for SPA hosting (or Managed Grafana alternative with comparison)
-- [ ] **WEB-02**: Architecture documents web-to-device command flow (UI → API → Device Shadow)
-- [ ] **WEB-03**: Architecture documents CloudFront OAC for secure S3 origin access
+- [x] **WEB-01**: Architecture documents S3 + CloudFront for SPA hosting (or Managed Grafana alternative with comparison)
+- [x] **WEB-02**: Architecture documents web-to-device command flow (UI → API → Device Shadow)
+- [x] **WEB-03**: Architecture documents CloudFront OAC for secure S3 origin access
 
 ### Data Lake & ETL
 
@@ -132,9 +132,9 @@ Deferred — optional bonus items not in primary scope.
 | API-01 | Phase 4 | Complete |
 | API-02 | Phase 4 | Complete |
 | API-03 | Phase 4 | Complete |
-| WEB-01 | Phase 4 | Pending |
-| WEB-02 | Phase 4 | Pending |
-| WEB-03 | Phase 4 | Pending |
+| WEB-01 | Phase 4 | Complete |
+| WEB-02 | Phase 4 | Complete |
+| WEB-03 | Phase 4 | Complete |
 | LAKE-01 | Phase 3 | Complete |
 | LAKE-02 | Phase 3 | Complete |
 | LAKE-03 | Phase 3 | Complete |
