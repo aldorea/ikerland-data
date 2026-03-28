@@ -43,9 +43,9 @@ Requirements for the architecture design document deliverable.
 
 ### API
 
-- [ ] **API-01**: Architecture documents API Gateway (HTTP API) + Lambda for REST API
-- [ ] **API-02**: Architecture documents Cognito for user authentication and JWT-based authorization
-- [ ] **API-03**: Architecture documents API deployed within the AWS platform (not external)
+- [x] **API-01**: Architecture documents API Gateway (HTTP API) + Lambda for REST API
+- [x] **API-02**: Architecture documents Cognito for user authentication and JWT-based authorization
+- [x] **API-03**: Architecture documents API deployed within the AWS platform (not external)
 
 ### Web Application
 
@@ -73,8 +73,8 @@ Requirements for the architecture design document deliverable.
 ### Documentation Quality
 
 - [ ] **DOC-01**: Architecture includes Mermaid diagram of the complete system (all layers and data flows)
-- [ ] **DOC-02**: Architecture includes per-layer Mermaid diagrams with component detail
-- [ ] **DOC-03**: Architecture includes technology comparison tables for each major decision (alternatives, pros, cons, recommendation)
+- [x] **DOC-02**: Architecture includes per-layer Mermaid diagrams with component detail
+- [x] **DOC-03**: Architecture includes technology comparison tables for each major decision (alternatives, pros, cons, recommendation)
 - [ ] **DOC-04**: Architecture includes cost optimization analysis with estimated monthly cost range
 - [ ] **DOC-05**: Architecture includes sequence diagrams for key flows (telemetry ingestion, alarm notification, command delivery)
 
@@ -129,9 +129,9 @@ Deferred — optional bonus items not in primary scope.
 | ALRM-02 | Phase 2 | Complete |
 | ALRM-03 | Phase 2 | Complete |
 | ALRM-04 | Phase 2 | Complete |
-| API-01 | Phase 4 | Pending |
-| API-02 | Phase 4 | Pending |
-| API-03 | Phase 4 | Pending |
+| API-01 | Phase 4 | Complete |
+| API-02 | Phase 4 | Complete |
+| API-03 | Phase 4 | Complete |
 | WEB-01 | Phase 4 | Pending |
 | WEB-02 | Phase 4 | Pending |
 | WEB-03 | Phase 4 | Pending |
@@ -147,8 +147,8 @@ Deferred — optional bonus items not in primary scope.
 | SEC-05 | Phase 1 | Complete |
 | SEC-06 | Phase 1 | Complete |
 | DOC-01 | Phase 4 | Pending |
-| DOC-02 | Phase 4 | Pending |
-| DOC-03 | Phase 4 | Pending |
+| DOC-02 | Phase 4 | Complete |
+| DOC-03 | Phase 4 | Complete |
 | DOC-04 | Phase 4 | Pending |
 | DOC-05 | Phase 4 | Pending |
 
