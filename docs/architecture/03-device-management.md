@@ -43,14 +43,14 @@ sequenceDiagram
     APIGW-->>WebUI: 202 Accepted {commandId}
 
     rect rgb(240, 240, 240)
-        Note over Shadow,Dev: Device is OFFLINE — desired state persisted in Shadow (version 15)
+        Note over Shadow,Dev: Device is OFFLINE - desired state persisted in Shadow (version 15)
     end
 
     Dev->>Shadow: CONNECT (MQTT TLS 8883, per-device X.509 cert)
     Dev->>Shadow: SUBSCRIBE $aws/things/{thingName}/shadow/update/delta
     Shadow-->>Dev: delta {state: {sampleRate: 300}, version: 15}
 
-    Note over Dev: version 15 > last applied (12) — apply command (idempotency guard)
+    Note over Dev: version 15 newer than last applied (12) - apply command
 
     activate Dev
     Dev->>Dev: Apply sampleRate = 300
@@ -101,12 +101,12 @@ sequenceDiagram
     Factory->>Device: Embed claim certificate + restrictive IoT policy<br/>(allows only $aws/certificates/create/+ and $aws/provisioning-templates/+/provision/+)
 
     Device->>IoTCore: CONNECT (MQTT TLS 1.2, claim certificate)
-    Device->>IoTCore: CreateKeysAndCertificate<br/>(or CreateCertificateFromCsr — CSR-based; private key never leaves device)
+    Device->>IoTCore: CreateKeysAndCertificate<br/>(or CreateCertificateFromCsr - CSR-based)
     IoTCore-->>Device: New certificate + private key + certificateOwnershipToken (1-hour expiry)
 
     Device->>IoTCore: RegisterThing {certificateOwnershipToken, templateName}
     IoTCore->>ProvLambda: Pre-hook: validate device identity
-    ProvLambda->>DDB: GetItem — check device serial in allowlist
+    ProvLambda->>DDB: GetItem - check device serial in allowlist
     DDB-->>ProvLambda: Item found / not found
     ProvLambda-->>IoTCore: allow / deny
 

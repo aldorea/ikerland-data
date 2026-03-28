@@ -27,7 +27,7 @@ The platform uses a **3-tier VPC design** (Decision D-01) deployed across **two 
 flowchart TD
     IGW[Internet Gateway]
 
-    subgraph VPC["VPC — 10.0.0.0/16"]
+    subgraph VPC["VPC 10.0.0.0/16"]
 
         subgraph PUB["Public Tier"]
             subgraph PUB_AZ1["Public Subnet AZ-1 (10.0.1.0/24)"]
@@ -49,7 +49,7 @@ flowchart TD
             end
         end
 
-        subgraph DATA["Data Tier — NO internet route"]
+        subgraph DATA["Data Tier - NO internet route"]
             subgraph DATA_AZ1["Data Subnet AZ-1 (10.0.5.0/24)"]
                 AUR_PRI[Aurora\nPrimary]
                 TS_EP["Timestream\n(Interface endpoint)"]

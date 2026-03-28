@@ -94,12 +94,12 @@ graph LR
         DDB[DynamoDB]
         Aurora[Aurora Serverless v2]
     end
-    subgraph Data Lake
+    subgraph DataLake["Data Lake"]
         S3[S3 Medallion]
         Glue[Glue ETL]
         Athena[Athena]
     end
-    subgraph API & Web
+    subgraph APIWeb["API / Web"]
         APIGW[API Gateway v2]
         Cognito[Cognito]
         CF[CloudFront]
@@ -110,7 +110,9 @@ graph LR
         EB[EventBridge]
     end
 
-    IoT --> KDS --> Lambda --> TS & DDB
+    IoT --> KDS --> Lambda
+    Lambda --> TS
+    Lambda --> DDB
     IoT --> KDF --> S3
     S3 --> Glue --> Athena
     IoT --> SNS --> SES

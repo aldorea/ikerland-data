@@ -77,12 +77,12 @@ flowchart LR
         ACM[ACM Certificate\nCustom Domain]
     end
 
-    subgraph VPC_PRIV["VPC — Private Subnet (10.0.3.0/24, 10.0.4.0/24)"]
+    subgraph VPC_PRIV["VPC Private Subnet (10.0.3.0/24, 10.0.4.0/24)"]
         LAMBDA[Lambda Handlers\nPython 3.12, arm64\nVPC-attached]
         RDS_PROXY[RDS Proxy\nConnection Pool]
     end
 
-    subgraph DATA["VPC — Data Tier (10.0.5.0/24, 10.0.6.0/24)"]
+    subgraph DATA["VPC Data Tier (10.0.5.0/24, 10.0.6.0/24)"]
         TS[(Timestream\nTelemetry)]
         DDB[(DynamoDB\nDevice Metadata\n+ Latest Cache)]
         AURORA[(Aurora\nPostgreSQL\nUsers + Alarms)]

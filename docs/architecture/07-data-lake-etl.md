@@ -48,22 +48,22 @@ All Gold zones registered in Glue Data Catalog as separate tables under the `dat
 flowchart LR
     FIREHOSE["Kinesis Data Firehose\n(Phase 2 output)\ndynamic partitioning\nyear=/month=/day=/"]
 
-    subgraph S3["S3 Data Lake — s3://data-lake/"]
-        BRONZE["Bronze Zone\nbronze/telemetry/\nyear=/month=/day=/\nRaw JSON · Intelligent-Tiering"]
-        SILVER["Silver Zone\nsilver/telemetry/\nyear=/month=/day=/device_type=/\nParquet (Snappy) · Standard"]
+    subgraph S3["S3 Data Lake"]
+        BRONZE["Bronze Zone\nbronze/telemetry/\nyear=/month=/day=/\nRaw JSON, Intelligent-Tiering"]
+        SILVER["Silver Zone\nsilver/telemetry/\nyear=/month=/day=/device_type=/\nParquet Snappy, Standard"]
         subgraph GOLD["Gold Zone"]
-            GOLD_H["gold/hourly_metrics/\nParquet · per device/hour"]
-            GOLD_D["gold/daily_rollups/\nParquet · per fleet/day"]
-            GOLD_DH["gold/device_health/\nParquet · uptime/last-seen"]
+            GOLD_H["gold/hourly_metrics/\nParquet, per device/hour"]
+            GOLD_D["gold/daily_rollups/\nParquet, per fleet/day"]
+            GOLD_DH["gold/device_health/\nParquet, uptime/last-seen"]
         end
     end
 
-    GLUE_BS["AWS Glue ETL Job\nBronze→Silver\nGlue 4.0 · PySpark · G.1X\nHourly schedule"]
-    GLUE_SG["AWS Glue ETL Job\nSilver→Gold\nGlue 4.0 · PySpark · G.1X\nDaily schedule"]
+    GLUE_BS["AWS Glue ETL Job\nBronze to Silver\nGlue 4.0, PySpark, G.1X\nHourly schedule"]
+    GLUE_SG["AWS Glue ETL Job\nSilver to Gold\nGlue 4.0, PySpark, G.1X\nDaily schedule"]
 
-    CATALOG[("AWS Glue Data Catalog\ndatalake database\nbronze_telemetry\nsilver_telemetry\ngold_hourly_metrics\ngold_daily_rollups\ngold_device_health")]
+    CATALOG[("AWS Glue Data Catalog\ndatalake database\n5 registered tables")]
 
-    SCHEDULER["Amazon EventBridge Scheduler\ncron: 0 * * * ? * (Bronze→Silver)\ncron: 0 2 * * ? * (Silver→Gold)"]
+    SCHEDULER["Amazon EventBridge Scheduler\ncron: 0 * * * ? * Bronze to Silver\ncron: 0 2 * * ? * Silver to Gold"]
 
     ATHENA["Amazon Athena\nServerless SQL v3\nWorkgroup: iot-analytics\n1 GB scan limit"]
 

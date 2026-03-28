@@ -188,13 +188,13 @@ EventBridge rules on `iot-alarm-bus` match on `"source": "iot.alarm-evaluator"` 
 ```mermaid
 flowchart LR
     DEV[IoT Device] -->|"MQTT 8883<br/>mTLS"| IOT[AWS IoT Core]
-    IOT -->|AlarmRule SQL<br/>WHERE value > 80| ALM[alarm-evaluator<br/>Lambda]
-    ALM -->|"conditional put_item<br/>DEDUP#device#type"| DDB{DynamoDB<br/>dedup check}
-    DDB -->|"attribute_not_exists<br/>succeeds — new alarm"| SNS[SNS<br/>alarm-notifications]
-    DDB -->|"ConditionalCheckFailed<br/>duplicate in 15-min window"| CW[CloudWatch<br/>AlarmsDeduplicated]
-    SNS -->|"Lambda subscription"| SES[ses-email-sender<br/>Lambda → SES]
+    IOT -->|"AlarmRule SQL<br/>WHERE value &gt; 80"| ALM[alarm-evaluator<br/>Lambda]
+    ALM -->|"conditional put_item<br/>DEDUP#device#type"| DDB[("DynamoDB<br/>dedup check")]
+    DDB -->|"attribute_not_exists<br/>succeeds - new alarm"| SNS[SNS<br/>alarm-notifications]
+    DDB -.->|"ConditionalCheckFailed<br/>duplicate in 15-min window"| CW[CloudWatch<br/>AlarmsDeduplicated]
+    SNS -->|"Lambda subscription"| SES["ses-email-sender<br/>Lambda to SES"]
     ALM -->|"PutEvents after<br/>SNS publish"| EB[EventBridge<br/>iot-alarm-bus]
-    EB -.->|"future rules"| FUT[Future channels<br/>SMS · webhook · Slack<br/>PagerDuty]
+    EB -.->|"future rules"| FUT["Future channels<br/>SMS, webhook, Slack,<br/>PagerDuty"]
     ALM -.->|"2 retries then<br/>async DLQ"| DLQ[SQS<br/>sqs-alarm-dlq]
 ```
 

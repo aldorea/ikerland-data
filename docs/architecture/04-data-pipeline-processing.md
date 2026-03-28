@@ -88,11 +88,17 @@ The `ttl` field (unix timestamp + 3600 seconds) tells DynamoDB to auto-delete th
 flowchart LR
     IOT[AWS IoT Core\nRules Engine]
     KDS[Kinesis Data Streams\ntelemetry stream]
-    LAM[Lambda\ntelemetry-processor\nPython 3.12 / arm64]
-    TS[Amazon Timestream\nLiveAnalytics]
-    DDB[Amazon DynamoDB\ndevice-metadata +\nlatest-value cache]
     DLQ[SQS\nsqs-telemetry-dlq]
-    META[(DynamoDB\ndevice-metadata\nenrichment source)]
+
+    subgraph VPC_PRIVATE["VPC Private Subnets"]
+        LAM[Lambda\ntelemetry-processor\nPython 3.12 / arm64]
+    end
+
+    subgraph VPC_DATA["VPC Data Subnets"]
+        TS[Amazon Timestream\nLiveAnalytics]
+        DDB[Amazon DynamoDB\ndevice-metadata +\nlatest-value cache]
+        META[(DynamoDB\ndevice-metadata\nenrichment source)]
+    end
 
     IOT -->|"TelemetryRule\nSELECT *, topic(2) AS thingName\nFROM 'devices/+/telemetry'"| KDS
     KDS -->|"ESM batch size 200\nBisectBatchOnFunctionError: true"| LAM
@@ -100,16 +106,6 @@ flowchart LR
     LAM -->|"BatchWriteItem\nlatest-value cache + TTL"| DDB
     LAM -.->|"OnFailure\nafter 3 retries"| DLQ
     META -.->|"BatchGetItem\nenrichment lookup"| LAM
-
-    subgraph VPC_PRIVATE["VPC — Private Subnets (10.0.3.0/24, 10.0.4.0/24)"]
-        LAM
-    end
-
-    subgraph VPC_DATA["VPC — Data Subnets (10.0.5.0/24, 10.0.6.0/24)"]
-        TS
-        DDB
-        META
-    end
 ```
 
 **Access path:** Lambda functions run in private subnets and reach Timestream via Interface VPC endpoint and DynamoDB via Gateway VPC endpoint — no traffic traverses the public internet. Both endpoint types are provisioned in the data subnet route tables per the Phase 1 VPC topology.

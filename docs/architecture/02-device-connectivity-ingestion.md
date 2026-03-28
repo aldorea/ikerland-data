@@ -43,7 +43,7 @@ The diagram below shows the complete message routing from device connection thro
 ```mermaid
 flowchart LR
     DEV[IoT Device] -->|"MQTT 8883<br/>mTLS"| IOT[AWS IoT Core]
-    IOT -->|Rules Engine| RE{Message Router}
+    IOT -->|Rules Engine| RE["Rules Engine<br/>Message Router"]
     RE -->|"SELECT *<br/>FROM 'devices/+/telemetry'"| KDS[Kinesis Data Streams]
     RE -->|"SELECT *<br/>FROM 'devices/+/alarm'"| LAM_ALARM[Lambda<br/>Alarm Evaluator]
     RE -->|"SELECT *<br/>FROM 'devices/+/config'"| DDB_CFG[DynamoDB<br/>Config Table]

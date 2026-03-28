@@ -152,27 +152,27 @@ See `01-security-foundation.md` for the complete security group and route table 
 
 ```mermaid
 flowchart TD
-    subgraph VPC["VPC — 10.0.0.0/16"]
+    subgraph VPC["VPC 10.0.0.0/16"]
 
-        subgraph PRIV["Private Subnets (compute) — 10.0.3.0/24, 10.0.4.0/24"]
+        subgraph PRIV["Private Subnets (compute)"]
             LAM_TEL["Lambda\ntelemetry-processor\n(sg-lambda)"]
             LAM_ALM["Lambda\nalarm-evaluator\n(sg-lambda)"]
             LAM_API["Lambda\napi-handlers\n(sg-lambda)"]
         end
 
-        subgraph DATA["Data Subnets (storage) — 10.0.5.0/24, 10.0.6.0/24\n[rt-data: NO internet route]"]
+        subgraph DATA["Data Subnets (storage)\nrt-data: NO internet route"]
             TS["Amazon Timestream\nfor LiveAnalytics\n(Interface VPC endpoint)"]
-            DDB["Amazon DynamoDB\n(Gateway VPC endpoint — free)"]
+            DDB["Amazon DynamoDB\n(Gateway VPC endpoint, free)"]
             RDS_PROXY["RDS Proxy\n(connection pooler)"]
-            AURORA["Aurora PostgreSQL\nServerless v2\n(0.5–8 ACU)\n(sg-aurora)"]
+            AURORA["Aurora PostgreSQL\nServerless v2\n(0.5-8 ACU)\n(sg-aurora)"]
             SM["AWS Secrets Manager\n(Interface VPC endpoint)"]
         end
 
     end
 
     LAM_TEL -->|"WriteRecords\n(HTTPS via vpce-timestream)"| TS
-    LAM_TEL -->|"PutItem / UpdateItem\n(via vpce-dynamodb — free)"| DDB
-    LAM_ALM -->|"GetItem / PutItem\n(dedup check)\n(via vpce-dynamodb — free)"| DDB
+    LAM_TEL -->|"PutItem / UpdateItem\n(via vpce-dynamodb, free)"| DDB
+    LAM_ALM -->|"GetItem / PutItem\n(dedup check, vpce-dynamodb)"| DDB
     LAM_API -->|"Select time-range\n(HTTPS via vpce-timestream)"| TS
     LAM_API -->|"Query / GetItem\n(device metadata)"| DDB
     LAM_API -->|"TCP 5432\n(via RDS Proxy)"| RDS_PROXY

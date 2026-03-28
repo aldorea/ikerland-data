@@ -9,7 +9,7 @@ This document provides the 30,000-foot view of the IoT monitoring platform archi
 ```mermaid
 flowchart LR
     subgraph DEVICES["IoT Devices"]
-        DEV["Device Fleet\n1K–10K devices"]
+        DEV["Device Fleet\n1K-10K devices"]
     end
 
     subgraph INGESTION["Layer 1: IoT Ingestion"]
@@ -64,7 +64,8 @@ flowchart LR
     SNS --> SES
     SNS --> EB
     KDF --> S3
-    S3 --> GLUE --> S3
+    S3 -->|"Bronze/Silver/Gold"| GLUE
+    GLUE -->|"Parquet"| S3
     S3 --> ATHENA
     CF -->|"static assets"| S3SPA
     CF -->|"/api/*"| APIGW
@@ -111,14 +112,14 @@ sequenceDiagram
 
     DEV->>IOT: MQTT PUBLISH devices/{thingName}/telemetry (JSON, 1KB)
     IOT->>RE: Trigger TelemetryRule (SELECT * FROM 'devices/+/telemetry')
-    RE->>KDS: Fan-out — hot path record
-    RE->>KDF: Fan-out — cold path record
-    Note over KDS: Buffering batch (size 100–500)
+    RE->>KDS: Fan-out - hot path record
+    RE->>KDF: Fan-out - cold path record
+    Note over KDS: Buffering batch (size 100-500)
     KDS->>LAM: Invoke with batch (Event Source Mapping)
     LAM->>TS: Write time-series record (thingName, ts, values)
     LAM->>DDB: Update latest-value cache (PK=deviceId, SK=latest)
     KDF->>S3B: Buffer + deliver raw JSON to bronze/year=/month=/day=/
-    Note over S3B: Glue ETL transforms Bronze → Silver (Parquet) → Gold (aggregated) on schedule — see 07-data-lake-etl.md
+    Note over S3B: Glue ETL transforms Bronze to Silver (Parquet) to Gold (aggregated) on schedule
 ```
 
 > See [02-device-connectivity-ingestion.md](02-device-connectivity-ingestion.md) for IoT Core and Rules Engine configuration.
@@ -146,7 +147,7 @@ sequenceDiagram
     participant EB as EventBridge
 
     DEV->>IOT: MQTT PUBLISH devices/{thingName}/alarm (threshold breach)
-    IOT->>RE: Trigger AlarmRule (SELECT * FROM 'devices/+/alarm' WHERE value > threshold)
+    IOT->>RE: Trigger AlarmRule (WHERE value exceeds threshold)
     RE->>LAME: Invoke Lambda (alarm-evaluator) asynchronously
     LAME->>AUR: Query alert rules and device group context (via RDS Proxy)
     LAME->>DDB: Conditional write (attribute_not_exists, 15-min TTL)
@@ -158,7 +159,7 @@ sequenceDiagram
     else Duplicate within 15-min window (conditional write fails)
         LAME->>LAME: Log suppressed duplicate, exit
     end
-    Note over LAME: On Lambda failure, DestinationConfig.OnFailure routes to SQS DLQ — no silent data loss
+    Note over LAME: On Lambda failure, DestinationConfig.OnFailure routes to SQS DLQ
 ```
 
 > See [02-device-connectivity-ingestion.md](02-device-connectivity-ingestion.md) for IoT Rules Engine.
@@ -185,7 +186,7 @@ sequenceDiagram
     APIGW->>COG: JWT authorizer validates token (issuer, audience, expiry)
     COG-->>APIGW: Token valid, claims extracted
     APIGW->>LAM: Invoke Lambda (command-handler)
-    LAM->>SHADOW: UpdateThingShadow — set desired state (e.g. {reboot: true})
+    LAM->>SHADOW: UpdateThingShadow - set desired state
     SHADOW-->>LAM: Shadow version returned
     LAM->>DDB: Audit log entry (commandId, thingName, operator, timestamp, shadowVersion)
     LAM-->>APIGW: 202 Accepted (command queued, not yet executed)
@@ -194,7 +195,7 @@ sequenceDiagram
     DEV->>SHADOW: Subscribe to delta topic ($aws/things/{thingName}/shadow/update/delta)
     SHADOW-->>DEV: Delta document (desired state differs from reported)
     DEV->>DEV: Apply command (reboot, config update, etc.)
-    DEV->>SHADOW: UpdateThingShadow — set reported state = desired state
+    DEV->>SHADOW: UpdateThingShadow - set reported state = desired state
     SHADOW-->>DEV: Delta cleared (desired == reported)
 ```
 
